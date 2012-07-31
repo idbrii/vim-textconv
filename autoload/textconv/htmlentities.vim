@@ -17,6 +17,9 @@ function! textconv#htmlentities#ToEntities()
     silent s/α/\&alpha;/e
     silent s/∧/\&and;/e
     silent s/∠/\&ang;/e
+	" Disable ' because it may happen that there's a function call with
+	" parameters surrounded by ' on the line. That and ' is perfectly valid in
+	" most encodings.
     "silent s/'/\&apos;/e
     silent s/Å/\&Aring;/e
     silent s/å/\&aring;/e
@@ -173,6 +176,8 @@ function! textconv#htmlentities#ToEntities()
     silent s/∝/\&prop;/e
     silent s/Ψ/\&Psi;/e
     silent s/ψ/\&psi;/e
+	" Disable \" because I don't want to transform all attr="value" on the line
+	" in attr=&quot;value&quot;. And " is also valid in any encoding.
     "silent s/"/\&quot;/e
     silent s/√/\&radic;/e
     silent s/»/\&raquo;/e

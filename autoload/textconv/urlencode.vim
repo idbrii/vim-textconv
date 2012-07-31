@@ -8,6 +8,9 @@ function! textconv#urlencode#ToUrlEncoding()
     silent s/ /%22/e
     silent s/#/%23/e
     silent s/$/%24/e
+	" Disable % because each substitution is executed for the whole line. If
+	" this one wasn't commented it would transform all the already transformed
+	" %FB in %25FB.
     " silent s/%/%25/e
     silent s/&/%26/e
     silent s/'/%27/e
