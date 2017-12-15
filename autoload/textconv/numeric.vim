@@ -51,7 +51,7 @@ endf
 function! textconv#numeric#convert_to_octal(input_str)
     return printf("0%o", textconv#numeric#string_to_number(a:input_str))
 endf
-function! textconv#numeric#convert_between_decimal_escape_and_hex(input_str)
+function! textconv#numeric#convert_to_next_numeral_representation(input_str)
     if a:input_str[0] == '\'
         return s:convert_decimal_escape_to_hex(a:input_str)
     elseif a:input_str[:1] == '0x'

@@ -16,8 +16,8 @@ if !exists("g:textconv_no_mappings") || !g:textconv_no_mappings
 
     " Mnemonic: Coerce to number. Like vim-abolish.
     " To next number: decimal -> hex -> escaped decimal -> hex
-    nnoremap crnn "cci"<C-r>=textconv#numeric#convert_between_decimal_escape_and_hex(@c)<CR><Esc>
-    xnoremap gcrnn "cc<C-r>=textconv#numeric#convert_between_decimal_escape_and_hex(@c)<CR><Esc>
+    nnoremap crnn "cci"<C-r>=textconv#numeric#convert_to_next_numeral_representation(@c)<CR><Esc>
+    xnoremap gcrnn "cc<C-r>=textconv#numeric#convert_to_next_numeral_representation(@c)<CR><Esc>
     " To hex number
     nnoremap crnh "cciw<C-r>=textconv#numeric#convert_to_hex(@c)<CR><Esc>
     " To decimal number
