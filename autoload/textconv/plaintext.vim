@@ -3,23 +3,23 @@
 " and Outlook) but I can't see in Vim. (I'm using Proggy Fonts, YMMV.)
 " We only want to convert characters to their normal ASCII equivalents.
 function! textconv#plaintext#ToPlainTextLossy()
-    silent s/„/,,/eg
-    silent s/•/-/eg
-    silent s/ˆ/^/eg
-    silent s/†/+/eg
-    silent s/‡/+/eg
-    silent s/…/.../eg
-    silent s/“/"/eg
-    silent s/‹/</eg
-    silent s/‘/'/eg
-    silent s/—/--/eg
-    silent s/–/-/eg
-    silent s/Œ/OE/eg
-    silent s/œ/oe/eg
-    silent s/”/"/eg
-    silent s/›/>/eg
-    silent s/’/'/eg
-    silent s/‚/,/eg
-    silent s/˜/~/eg
-    silent s/™/TM/eg
+    silent s/\V\C„/,,/eg
+    silent s/\V\C•/-/eg
+    silent s/\V\Cˆ/^/eg
+    silent s/\V\C†/+/eg
+    silent s/\V\C‡/+/eg
+    silent s/\V\C…/.../eg
+    silent s/\V\C“/"/eg
+    silent s/\V\C‹/</eg
+    silent s/\V\C‘/'/eg
+    silent s/\V\C—/--/eg
+    silent s/\V\C–/-/eg
+    silent s/\V\CŒ/OE/eg
+    silent s/\V\Cœ/oe/eg
+    silent s/\V\C”/"/eg
+    silent s/\V\C›/>/eg
+    silent s/\V\C’/'/eg
+    silent s/\V\C‚/,/eg
+    silent s/\V\C˜/~/eg
+    silent s/\V\C™/TM/eg
 endfunction
