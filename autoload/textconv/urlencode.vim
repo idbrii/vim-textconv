@@ -3,6 +3,8 @@
 " http://www.reddit.com/r/vim/comments/vbvzy/the_vim_holy_grail_why_the_hell_is_the_esc_key_so/c53iq0i?context=3
 
 function! textconv#urlencode#ToUrlEncoding()
+    " Vim doesn't distinguish between %20 %7F %A0, but space is too
+    " common to omit.
     silent s/\V\C /%20/eg
     silent s/\V\C!/%21/eg
     silent s/\V\C"/%22/eg
@@ -39,7 +41,11 @@ function! textconv#urlencode#ToUrlEncoding()
     silent s/\V\C|/%7C/eg
     silent s/\V\C}/%7D/eg
     silent s/\V\C~/%7E/eg
+    " Vim doesn't distinguish between %20 %7F %A0
+    "~ silent s/\V\C /%7F/eg
     silent s/\V\C€/%80/eg
+    " Vim doesn't distinguish between %81 and %8D
+    "~ silent s/\V\C/%81/eg
     silent s/\V\C‚/%82/eg
     silent s/\V\Cƒ/%83/eg
     silent s/\V\C„/%84/eg
@@ -51,7 +57,11 @@ function! textconv#urlencode#ToUrlEncoding()
     silent s/\V\CŠ/%8A/eg
     silent s/\V\C‹/%8B/eg
     silent s/\V\CŒ/%8C/eg
+    " Vim doesn't distinguish between %81 and %8D
+    "~ silent s/\V\C/%8D/eg
     silent s/\V\CŽ/%8E/eg
+    silent s/\V\C/%8F/eg
+    silent s/\V\C/%90/eg
     silent s/\V\C‘/%91/eg
     silent s/\V\C’/%92/eg
     silent s/\V\C“/%93/eg
@@ -64,11 +74,16 @@ function! textconv#urlencode#ToUrlEncoding()
     silent s/\V\Cš/%9A/eg
     silent s/\V\C›/%9B/eg
     silent s/\V\Cœ/%9C/eg
+    " This one messes up vim display so it may look wrong here, but it's fine.
+    silent s/\V\C/%9D/eg
     silent s/\V\Cž/%9E/eg
     silent s/\V\CŸ/%9F/eg
+    " Vim doesn't distinguish between %20 %7F %A0
+    "~ silent s/\V\C /%A0/eg
     silent s/\V\C¡/%A1/eg
     silent s/\V\C¢/%A2/eg
     silent s/\V\C£/%A3/eg
+    silent s/\V\C¤/%A4/eg
     silent s/\V\C¥/%A5/eg
     silent s/\V\C¦/%A6/eg
     silent s/\V\C§/%A7/eg
@@ -119,6 +134,7 @@ function! textconv#urlencode#ToUrlEncoding()
     silent s/\V\CÔ/%D4/eg
     silent s/\V\CÕ/%D5/eg
     silent s/\V\CÖ/%D6/eg
+    silent s/\V\C×/%D7/eg
     silent s/\V\CØ/%D8/eg
     silent s/\V\CÙ/%D9/eg
     silent s/\V\CÚ/%DA/eg
@@ -197,7 +213,9 @@ function! textconv#urlencode#FromUrlEncoding()
     silent s/\V\C%7C/|/eg
     silent s/\V\C%7D/}/eg
     silent s/\V\C%7E/~/eg
+    silent s/\V\C%7F/ /eg
     silent s/\V\C%80/€/eg
+    silent s/\V\C%81//eg
     silent s/\V\C%82/‚/eg
     silent s/\V\C%83/ƒ/eg
     silent s/\V\C%84/„/eg
@@ -209,7 +227,10 @@ function! textconv#urlencode#FromUrlEncoding()
     silent s/\V\C%8A/Š/eg
     silent s/\V\C%8B/‹/eg
     silent s/\V\C%8C/Œ/eg
+    silent s/\V\C%8D//eg
     silent s/\V\C%8E/Ž/eg
+    silent s/\V\C%8F//eg
+    silent s/\V\C%90//eg
     silent s/\V\C%91/‘/eg
     silent s/\V\C%92/’/eg
     silent s/\V\C%93/“/eg
@@ -225,9 +246,11 @@ function! textconv#urlencode#FromUrlEncoding()
     silent s/\V\C%9D//eg
     silent s/\V\C%9E/ž/eg
     silent s/\V\C%9F/Ÿ/eg
+    silent s/\V\C%A0/ /eg
     silent s/\V\C%A1/¡/eg
     silent s/\V\C%A2/¢/eg
     silent s/\V\C%A3/£/eg
+    silent s/\V\C%A4/¤/eg
     silent s/\V\C%A5/¥/eg
     silent s/\V\C%A6/¦/eg
     silent s/\V\C%A7/§/eg
@@ -278,6 +301,7 @@ function! textconv#urlencode#FromUrlEncoding()
     silent s/\V\C%D4/Ô/eg
     silent s/\V\C%D5/Õ/eg
     silent s/\V\C%D6/Ö/eg
+    silent s/\V\C%D7/×/eg
     silent s/\V\C%D8/Ø/eg
     silent s/\V\C%D9/Ù/eg
     silent s/\V\C%DA/Ú/eg
