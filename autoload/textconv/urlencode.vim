@@ -3,9 +3,9 @@
 " http://www.reddit.com/r/vim/comments/vbvzy/the_vim_holy_grail_why_the_hell_is_the_esc_key_so/c53iq0i?context=3
 
 function! textconv#urlencode#ToUrlEncoding()
-    silent s/e/%20/eg
+    silent s/ /%20/eg
     silent s/!/%21/eg
-    silent s/ /%22/eg
+    silent s/"/%22/eg
     silent s/#/%23/eg
     silent s/$/%24/eg
 	" Disable % because each substitution is executed for the whole line. If
@@ -70,14 +70,14 @@ function! textconv#urlencode#ToUrlEncoding()
     silent s/¢/%A2/eg
     silent s/£/%A3/eg
     silent s/¥/%A5/eg
-    silent s/|/%A6/eg
+    silent s/¦/%A6/eg
     silent s/§/%A7/eg
     silent s/¨/%A8/eg
     silent s/©/%A9/eg
     silent s/ª/%AA/eg
     silent s/«/%AB/eg
     silent s/¬/%AC/eg
-    silent s/¯/%AD/eg
+    silent s/­/%AD/eg
     silent s/®/%AE/eg
     silent s/¯/%AF/eg
     silent s/°/%B0/eg
@@ -164,13 +164,13 @@ endfunction
 " Transform UrlEncoded characters to normal.
 " Transformer les caractères UrlEncodés en caractères normaux.
 function! textconv#urlencode#FromUrlEncoding()
-    silent s/%20/e/eg
+    silent s/%20/ /eg
     silent s/%21/!/eg
-    silent s/%22/ /eg
+    silent s/%22/"/eg
     silent s/%23/#/eg
     silent s/%24/$/eg
     " silent s/%25/%/eg
-    silent s/%26/&/eg
+    silent s/%26/\&/eg
     silent s/%27/'/eg
     silent s/%28/(/eg
     silent s/%29/)/eg
@@ -222,21 +222,21 @@ function! textconv#urlencode#FromUrlEncoding()
     silent s/%9A/š/eg
     silent s/%9B/›/eg
     silent s/%9C/œ/eg
-    silent s/%9D/ /eg
+    silent s/%9D//eg
     silent s/%9E/ž/eg
     silent s/%9F/Ÿ/eg
     silent s/%A1/¡/eg
     silent s/%A2/¢/eg
     silent s/%A3/£/eg
     silent s/%A5/¥/eg
-    silent s/%A6/|/eg
+    silent s/%A6/¦/eg
     silent s/%A7/§/eg
     silent s/%A8/¨/eg
     silent s/%A9/©/eg
     silent s/%AA/ª/eg
     silent s/%AB/«/eg
     silent s/%AC/¬/eg
-    silent s/%AD/¯/eg
+    silent s/%AD/­/eg
     silent s/%AE/®/eg
     silent s/%AF/¯/eg
     silent s/%B0/°/eg
