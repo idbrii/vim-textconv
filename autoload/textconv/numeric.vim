@@ -51,6 +51,17 @@ endf
 function! textconv#numeric#convert_to_octal(input_str)
     return printf("0%o", textconv#numeric#string_to_number(a:input_str))
 endf
+function! textconv#numeric#convert_to_normalized_color(input_str)
+    let color = []
+    for i in range(0, len(a:input_str)-1, 2)
+        let v = textconv#numeric#string_to_number("0x".. a:input_str[i:i+1])
+        call add(color, printf("%.2f", v / 255.0))
+    endfor
+    if len(color) < 4
+        call add(color, 1)
+    endif
+    return color->join(", ")
+endf
 function! textconv#numeric#convert_to_next_numeral_representation(input_str)
     if a:input_str[0] == '\'
         return s:convert_decimal_escape_to_hex(a:input_str)

@@ -24,6 +24,8 @@ if !exists("g:textconv_no_mappings") || !g:textconv_no_mappings
     xnoremap gcrnn "cc<C-r>=textconv#numeric#convert_to_next_numeral_representation(@c)<CR><Esc>
     " To hex number
     nnoremap crnh "cciw<C-r>=textconv#numeric#convert_to_hex(@c)<CR><Esc>
+	" To normalized colour
+    nnoremap crnc "cciw<C-r>=textconv#numeric#convert_to_normalized_color(@c)<CR><Esc>
     " To decimal number
     nnoremap crnd "cciw<C-r>=textconv#numeric#string_to_number(@c)<CR><Esc>
     nnoremap crno "cciw<C-r>=textconv#numeric#convert_to_octal(@c)<CR><Esc>
